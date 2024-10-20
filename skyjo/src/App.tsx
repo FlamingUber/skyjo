@@ -4,6 +4,10 @@ import { Game } from './game';
 import './App.css';
 
 function App() {
+  const handleClick = () => {
+    const game = new Game();
+    game.printGame();
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -19,6 +23,7 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={handleClick}>Click me</button>
       </header>
     </div>
   );
