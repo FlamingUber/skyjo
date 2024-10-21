@@ -1,7 +1,7 @@
-import {Deck} from './Deck';
-import {DEFAULT_FIELD_SIZE, Field} from './Field';
-import {DrawPile} from './DrawPile';
-import {Player} from './Player';
+import {Deck} from './deck';
+import {DEFAULT_FIELD_SIZE, Field} from './field';
+import {DrawPile} from './draw_pile';
+import {Player} from './player';
 
 export class Game {
   private drawPile: DrawPile;

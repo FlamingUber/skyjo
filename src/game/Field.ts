@@ -1,4 +1,4 @@
-import {Card, FlippableCard} from './Card';
+import {Card, FlippableCard} from './card';
 
 export const DEFAULT_FIELD_SIZE = 12;
 

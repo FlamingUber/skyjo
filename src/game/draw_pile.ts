@@ -1,5 +1,5 @@
-import {Card} from './Card';
-import {Deck} from './Deck';
+import {Card} from './card';
+import {Deck} from './deck';
 
 export class DrawPile extends Deck {
   constructor() {
