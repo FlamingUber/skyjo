@@ -1,11 +1,11 @@
 import { Field } from './Field';
 
 export class Player {
-  private name: string;
-  private field: Field;
+  id: string;
+  field: Field;
 
-  constructor(name: string) {
+  constructor(id: string) {
+    this.id = id;
     this.field = new Field();
-    this.name = name;
   }
 }

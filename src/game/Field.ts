@@ -1,11 +1,12 @@
 import { Card, FlippableCard } from './Card';
 
+export const DEFAULT_FIELD_SIZE = 12;
+
 export class Field {
-    private readonly DEFAULT_FIELD_SIZE = 12;  
     private cards: FlippableCard[];
 
     constructor() {
-        this.cards = new Array(this.DEFAULT_FIELD_SIZE);
+        this.cards = new Array(DEFAULT_FIELD_SIZE);
         for (let i = 0; i < this.cards.length; i++) {
             this.cards[i] = new FlippableCard();
         }
