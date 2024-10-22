@@ -1,15 +1,46 @@
-import { Deck } from './Deck';
-import { DrawPile } from './DrawPile';
+import {Deck} from './deck';
+import {DEFAULT_FIELD_SIZE, Field} from './field';
+import {DrawPile} from './draw_pile';
+import {Player} from './player';
 
 export class Game {
-    private drawPile: DrawPile;
-    private discardPile: Deck;
-    constructor() {
-        this.drawPile = new DrawPile();
-        this.discardPile = new Deck();
-    }
+  private drawPile: DrawPile;
+  private discardPile: Deck;
+  private players: Player[];
+  private started: boolean;
+  private currentPlayer: number;
+  private who_ended: number | undefined;
 
-    printGame() {
-        console.log(this.drawPile, this.discardPile);
+  constructor() {
+    this.drawPile = new DrawPile();
+    this.discardPile = new Deck();
+    this.players = [];
+    this.started = false;
+    this.currentPlayer = 0;
+  }
+
+  public addPlayer(id: string): void {
+    if (this.started) {
+      throw new Error('Cannot add a player once the game has started.');
     }
+    if (this.players.some(player => player.id === id)) {
+      throw new Error(
+        'Cannot create a player with the same ID as an existing player.',
+      );
+    }
+    const newPlayer = new Player(id);
+    for (let i = 0; i < DEFAULT_FIELD_SIZE; i++) {
+      newPlayer.field.swap(i, this.drawPile.drawCard());
+    }
+    this.players.push(newPlayer);
+  }
+
+  public startGame(): void {
+    this.discardPile.addCard(this.drawPile.drawCard());
+    this.started = true;
+  }
+
+  printGame() {
+    console.log(this);
+  }
 }
