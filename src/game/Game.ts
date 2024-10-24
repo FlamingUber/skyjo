@@ -1,5 +1,5 @@
 import {Deck} from './deck';
-import {DEFAULT_FIELD_SIZE, Field} from './field';
+import {DEFAULT_FIELD_SIZE} from './field';
 import {DrawPile} from './draw_pile';
 import {Player} from './player';
 
@@ -7,7 +7,6 @@ export class Game {
   private drawPile: DrawPile;
   private discardPile: Deck;
   private players: Player[];
-  private started: boolean;
   private currentPlayer: number;
   private who_ended: number | undefined;
 
@@ -15,12 +14,15 @@ export class Game {
     this.drawPile = new DrawPile();
     this.discardPile = new Deck();
     this.players = [];
-    this.started = false;
     this.currentPlayer = 0;
   }
 
+  private hasStarted(): boolean {
+    return this.discardPile.size() > 0;
+  }
+
   public addPlayer(id: string): void {
-    if (this.started) {
+    if (this.hasStarted()) {
       throw new Error('Cannot add a player once the game has started.');
     }
     if (this.players.some(player => player.id === id)) {
@@ -37,7 +39,6 @@ export class Game {
 
   public startGame(): void {
     this.discardPile.addCard(this.drawPile.drawCard());
-    this.started = true;
   }
 
   printGame() {

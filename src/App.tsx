@@ -1,18 +1,18 @@
 import React from 'react';
 import logo from './logo.svg';
-import { Game } from './game';
+import {Game} from './game';
 import './App.css';
 
 function App() {
   const handleClick = () => {
     const game = new Game();
-    game.addPlayer("Ari");
+    game.addPlayer('Ari');
     game.printGame();
-    game.addPlayer("Yoni");
+    game.addPlayer('Yoni');
     game.printGame();
     game.startGame();
     game.printGame();
-  }
+  };
   return (
     <div className="App">
       <header className="App-header">
