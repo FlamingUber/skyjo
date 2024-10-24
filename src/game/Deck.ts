@@ -18,7 +18,7 @@ export class Deck {
     if (this.cards.length === 0) {
       throw new Error('Tried viewing the top card of an empty deck.');
     }
-    return this.cards.pop()!;
+    return this.cards[length - 1];
   }
 
   public size(): number {
