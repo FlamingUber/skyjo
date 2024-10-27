@@ -1,4 +1,5 @@
 import {Card} from './card';
+import { shuffle } from './util';
 
 export class Deck {
   protected cards: Card[] = [];
@@ -26,13 +27,6 @@ export class Deck {
   }
 
   protected shuffle(): void {
-    // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
-    let i = this.cards.length;
-    while (i !== 0) {
-      const rand = Math.floor(Math.random() * i);
-      i--;
-
-      [this.cards[i], this.cards[rand]] = [this.cards[rand], this.cards[i]];
-    }
+    shuffle(this.cards);
   }
 }
