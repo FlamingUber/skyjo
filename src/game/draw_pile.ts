@@ -6,9 +6,9 @@ export class DrawPile extends Deck {
     super();
     for (let cardVal = -2; cardVal <= 12; cardVal++) {
       let numToAdd = 10;
-      if (cardVal == -2) {
+      if (cardVal === -2) {
         numToAdd = 5;
-      } else if (cardVal == 0) {
+      } else if (cardVal === 0) {
         numToAdd = 15;
       }
       for (let i = 0; i < numToAdd; i++) {
@@ -18,6 +18,7 @@ export class DrawPile extends Deck {
     super.shuffle();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public addCard(card: Card): void {
     throw new Error('Cannot add any card to a DrawPile.');
   }
